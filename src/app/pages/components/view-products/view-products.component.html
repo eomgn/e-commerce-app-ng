@@ -1,6 +1,6 @@
 <div class="container">
   <div class="cards--list">
-    <mat-spinner *ngIf="spinner"></mat-spinner>
+    <mat-spinner *ngIf="spinner" color="warn"></mat-spinner>
 
     <div class="card" *ngFor="let item of dataProducts">
       <div class="card--img">
@@ -13,7 +13,11 @@
         <div class="card--details-price">
           <p>{{ item.price | currency : "BRL" }}</p>
         </div>
-        <button mat-raised-button color="accent">
+        <button
+          mat-raised-button
+          color="accent"
+          [routerLink]="['detail-product', item.id]"
+        >
           <mat-icon>information</mat-icon>
           Detalhes
         </button>

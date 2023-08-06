@@ -11,8 +11,6 @@ export class ViewProductsComponent implements OnInit {
   dataProducts: IProducts[] = [];
 
   spinner: boolean = true;
-  progress: boolean = true;
-  progressBar: boolean = true;
 
   constructor(private productsService: ProductsService) {}
 
@@ -22,12 +20,10 @@ export class ViewProductsComponent implements OnInit {
 
   displayProducts() {
     this.productsService.getProducts().subscribe((response: any) => {
-      console.log(response);
+      // console.log(response);
       this.dataProducts = response.products;
 
       this.spinner = !this.spinner;
-      this.progress = !this.progress;
-      this.progressBar = !this.progressBar;
     });
   }
 }

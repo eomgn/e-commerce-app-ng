@@ -1,0 +1,51 @@
+<mat-progress-bar
+  mode="indeterminate"
+  *ngIf="progressBar"
+  color="warn"
+></mat-progress-bar>
+<div class="container" *ngIf="productData">
+  <div class="detail-product">
+    <button mat-mini-fab routerLink="/">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div class="detail-product--actions">
+      <div class="detail-product--images">
+        <img src="{{ productData.thumbnail }}" alt="Imagem do produto" />
+      </div>
+      <div class="detail-product--buttons">
+        <button mat-flat-button color="accent">
+          <mat-icon>inventory_2</mat-icon>
+          Comprar agora
+        </button>
+
+        <button mat-flat-button color="primary">
+          <mat-icon>shopping_cart_checkout</mat-icon>
+          Adicionar ao carrinho
+        </button>
+      </div>
+    </div>
+    <div class="detail-product--info">
+      <h1 class="detail-product--info-title">
+        {{ productData.title }}
+      </h1>
+      <strong style="color: #673ab7">Preço especial</strong>
+      <p style="color: #12b312">
+        <strong>Desconto:</strong>
+        {{ productData.discountPercentage / 100 | percent : "1.2-2" }}
+      </p>
+
+      <h3 class="detail-product--info-price">
+        Preço: {{ productData.price | currency : "BRL" }}
+      </h3>
+
+      <p><strong>Categoria:</strong> {{ productData.category }}</p>
+      <p><strong>Marca:</strong> {{ productData.brand }}</p>
+
+      <p class="detail-product--info-description">
+        <strong>Descrição:</strong> {{ productData.description }}
+      </p>
+
+      <p><strong>Em estoque:</strong> {{ productData.stock }} unidades</p>
+    </div>
+  </div>
+</div>
