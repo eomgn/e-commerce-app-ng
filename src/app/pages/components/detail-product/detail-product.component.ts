@@ -11,6 +11,8 @@ import { IProducts } from '../../interfaces/products';
 export class DetailProductComponent implements OnInit {
   productData!: IProducts;
 
+  showAddCart: boolean = true;
+  showRemoveCart: boolean = false;
   progressBar: boolean = true;
 
   constructor(
@@ -21,13 +23,26 @@ export class DetailProductComponent implements OnInit {
   ngOnInit(): void {
     const id = this.activedRoute.snapshot.paramMap.get('id');
 
-    id &&
-      this.productService.getProductByID(id).subscribe((response) => {
-        // console.log(response);
-        this.productData = response;
-        console.log(this.productData);
+    this.productService.getProductByID(id).subscribe((response) => {
+      // console.log(response);
+      this.productData = response;
+      console.log(this.productData);
 
-        this.progressBar = !this.progressBar;
-      });
+      this.progressBar = !this.progressBar;
+    });
+  }
+
+  addToCart(item: IProducts) {
+    this.showAddCart = false;
+    this.showRemoveCart = true;
+
+    this.productService.addToCart(item);
+  }
+
+  removeProduct(item: IProducts) {
+    this.showAddCart = true;
+    this.showRemoveCart = false;
+
+    this.productService.removeToCart(item);
   }
 }

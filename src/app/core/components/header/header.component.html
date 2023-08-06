@@ -4,13 +4,14 @@
 
     <div class="cart">
       <button
-        routerLink="/view-products"
         mat-icon-button
         class="example-icon favorite-icon"
         aria-label="Example icon-button with heart icon"
       >
         <!-- <mat-icon>shopping_cart</mat-icon> -->
-        <mat-icon matBadge="15" matBadgeColor="warn">shopping_cart</mat-icon>
+        <mat-icon matBadge="{{ cartList }}" matBadgeColor="warn"
+          >shopping_cart</mat-icon
+        >
       </button>
     </div>
   </mat-toolbar>

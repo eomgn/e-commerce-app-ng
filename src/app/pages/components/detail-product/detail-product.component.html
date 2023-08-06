@@ -18,9 +18,24 @@
           Comprar agora
         </button>
 
-        <button mat-flat-button color="primary">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="addToCart(productData)"
+          *ngIf="showAddCart"
+        >
           <mat-icon>shopping_cart_checkout</mat-icon>
           Adicionar ao carrinho
+        </button>
+
+        <button
+          mat-flat-button
+          color="warn"
+          (click)="removeProduct(productData)"
+          *ngIf="showRemoveCart"
+        >
+          <mat-icon>remove_shopping_cart</mat-icon>
+          Remover do carrinho
         </button>
       </div>
     </div>

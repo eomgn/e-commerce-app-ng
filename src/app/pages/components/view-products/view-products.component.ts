@@ -26,4 +26,8 @@ export class ViewProductsComponent implements OnInit {
       this.spinner = !this.spinner;
     });
   }
+
+  addCart(item: IProducts): void {
+    this.productsService.addToCart(item);
+  }
 }
