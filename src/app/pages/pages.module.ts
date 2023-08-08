@@ -6,9 +6,10 @@ import { MaterialModule } from '../shared/material/material.module';
 
 import { ViewProductsComponent } from './components/view-products/view-products.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
+import { DisplayCartComponent } from './components/display-cart/display-cart.component';
 
 @NgModule({
-  declarations: [ViewProductsComponent, DetailProductComponent],
+  declarations: [ViewProductsComponent, DetailProductComponent, DisplayCartComponent],
   imports: [CommonModule, PagesRoutingModule, MaterialModule],
   exports: [ViewProductsComponent, DetailProductComponent],
 })

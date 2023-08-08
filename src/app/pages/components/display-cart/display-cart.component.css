@@ -1,0 +1,27 @@
+.container {
+  padding: 40px;
+}
+
+.imageProduct {
+  width: 200px;
+  border-radius: 6px;
+}
+
+.full-width-table {
+  border-radius: 6px;
+  overflow: hidden !important;
+  border-bottom-style: none !important;
+}
+
+.products--info {
+  text-align: center;
+}
+
+.products--info-addCart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+
+  padding-top: 1rem;
+}

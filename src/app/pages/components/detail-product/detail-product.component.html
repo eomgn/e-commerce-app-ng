@@ -1,8 +1,11 @@
+<!-- progressbar loading -->
 <mat-progress-bar
   mode="indeterminate"
   *ngIf="progressBar"
   color="warn"
 ></mat-progress-bar>
+
+<!-- ações no produto -->
 <div class="container" *ngIf="productData">
   <div class="detail-product">
     <button mat-mini-fab routerLink="/">
@@ -39,6 +42,9 @@
         </button>
       </div>
     </div>
+
+    <!-- detalhes do produto -->
+
     <div class="detail-product--info">
       <h1 class="detail-product--info-title">
         {{ productData.title }}

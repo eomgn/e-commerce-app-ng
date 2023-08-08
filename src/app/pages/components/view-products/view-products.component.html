@@ -1,7 +1,9 @@
 <div class="container">
   <div class="cards--list">
+    <!-- spinner de carregando os produtos -->
     <mat-spinner *ngIf="spinner" color="warn"></mat-spinner>
 
+    <!-- produtos com detalhes e ações -->
     <div class="card" *ngFor="let item of dataProducts">
       <div class="card--img">
         <img src="{{ item.thumbnail }}" alt="Imagem do produto" />
@@ -10,9 +12,11 @@
         <div class="card--details-title">
           <p>{{ item.title }}</p>
         </div>
+
         <div class="card--details-price">
           <p>{{ item.price | currency : "BRL" }}</p>
         </div>
+
         <button
           mat-raised-button
           color="accent"
@@ -21,6 +25,7 @@
           <mat-icon>information</mat-icon>
           Detalhes
         </button>
+
         <button mat-raised-button color="primary" (click)="addCart(item)">
           <mat-icon>add_shopping_cart</mat-icon>
           Comprar

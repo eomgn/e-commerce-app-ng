@@ -13,3 +13,7 @@ body {
 
   background-color: #ccc;
 }
+
+.mat-mdc-table {
+  border-bottom-style: none;
+}
