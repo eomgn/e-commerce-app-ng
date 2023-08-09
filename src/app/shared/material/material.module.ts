@@ -9,6 +9,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [],
@@ -21,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
     MatProgressBarModule,
     MatTableModule,
     MatInputModule,
+    MatTooltipModule,
   ],
   exports: [
     MatToolbarModule,
@@ -31,6 +33,7 @@ import { MatInputModule } from '@angular/material/input';
     MatProgressBarModule,
     MatTableModule,
     MatInputModule,
+    MatTooltipModule,
   ],
 })
 export class MaterialModule {}

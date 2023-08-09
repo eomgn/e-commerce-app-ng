@@ -7,6 +7,7 @@ import { MaterialModule } from '../shared/material/material.module';
 import { ViewProductsComponent } from './components/view-products/view-products.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
 import { DisplayCartComponent } from './components/display-cart/display-cart.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,12 @@ import { DisplayCartComponent } from './components/display-cart/display-cart.com
     DetailProductComponent,
     DisplayCartComponent,
   ],
-  imports: [CommonModule, PagesRoutingModule, MaterialModule],
+  imports: [
+    CommonModule,
+    PagesRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
+  ],
   exports: [ViewProductsComponent, DetailProductComponent],
 })
 export class PagesModule {}

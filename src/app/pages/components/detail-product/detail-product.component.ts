@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { IProducts } from '../../interfaces/products';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-detail-product',
   templateUrl: './detail-product.component.html',
   styleUrls: ['./detail-product.component.css'],
 })
-export class DetailProductComponent implements OnInit {
+export class DetailProductComponent implements OnInit, OnDestroy {
   productData!: IProducts;
+
+  subscription = new Subscription();
 
   showAddCart: boolean = true;
   showRemoveCart: boolean = false;
@@ -23,13 +26,15 @@ export class DetailProductComponent implements OnInit {
   ngOnInit(): void {
     const id = this.activedRoute.snapshot.paramMap.get('id');
 
-    this.productService.getProductByID(id).subscribe((response) => {
-      // console.log(response);
-      this.productData = response;
-      console.log(this.productData);
+    this.subscription = this.productService
+      .getProductByID(id)
+      .subscribe((response) => {
+        // console.log(response);
+        this.productData = response;
+        console.log(this.productData);
 
-      this.progressBar = !this.progressBar;
-    });
+        this.progressBar = !this.progressBar;
+      });
   }
 
   addToCart(item: IProducts) {
@@ -44,5 +49,9 @@ export class DetailProductComponent implements OnInit {
     this.showRemoveCart = false;
 
     this.productService.removeToCart(item);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

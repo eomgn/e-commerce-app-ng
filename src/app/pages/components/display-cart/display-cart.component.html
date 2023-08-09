@@ -57,11 +57,17 @@
               color="accent"
               class="button"
               (click)="viewProduct()"
+              matTooltip="View product"
             >
               <mat-icon> search </mat-icon>
             </button>
 
-            <button mat-mini-fab class="button" (click)="removeItemCart(row)">
+            <button
+              mat-mini-fab
+              class="button"
+              (click)="removeItemCart(row)"
+              matTooltip="Delete product"
+            >
               <mat-icon> delete </mat-icon>
             </button>
           </td>
@@ -85,14 +91,14 @@
             complete order
           </button>
           <button mat-flat-button color="warn" (click)="removeAllItemsCart()">
-            <mat-icon>cancel_done </mat-icon>
+            <mat-icon>delete_forever</mat-icon>
             empty order
           </button>
         </div>
       </div>
 
       <div class="cart--form" *ngIf="addressForm">
-        <form formGroup="form">
+        <form [formGroup]="form">
           <h3 class="cart--form--title">Complete Order</h3>
 
           <mat-form-field class="example-full-width">
@@ -122,6 +128,7 @@
               matInput
               placeholder="Ex. 999999999"
               mobileNumber="name"
+              formControlName="mobileNumber"
             />
           </mat-form-field>
 

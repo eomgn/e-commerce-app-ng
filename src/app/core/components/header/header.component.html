@@ -4,14 +4,26 @@
 
     <div class="cart">
       <button
-        mat-icon-button
+        mat-mini-fab
         class="example-icon favorite-icon"
         aria-label="Example icon-button with heart icon"
+        matTooltip="Cart"
         routerLink="display-cart"
       >
         <mat-icon matBadge="{{ cartList }}" matBadgeColor="warn"
           >shopping_cart</mat-icon
         >
+      </button>
+
+      <button
+        mat-mini-fab
+        class="example-icon favorite-icon"
+        aria-label="Example icon-button with heart icon"
+        *ngIf="isActive('/display-cart')"
+        matTooltip="Return products"
+        routerLink="/"
+      >
+        <mat-icon>reply</mat-icon>
       </button>
     </div>
   </mat-toolbar>

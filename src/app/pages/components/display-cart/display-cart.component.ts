@@ -42,13 +42,6 @@ export class DisplayCartComponent implements OnInit {
 
     // form
 
-    // this.forms = this.fb.group({
-    //   name: ['', Validators.required],
-    //   email: ['', Validators.required],
-    //   mobileNumber: ['', Validators.required],
-    //   address: ['', Validators.required],
-    // });
-
     this.form = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],

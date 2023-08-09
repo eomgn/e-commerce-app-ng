@@ -11,7 +11,7 @@ import { MaterialModule } from './shared/material/material.module';
 import { PagesModule } from './pages/pages.module';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     CoreModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {
