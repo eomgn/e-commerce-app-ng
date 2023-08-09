@@ -9,7 +9,11 @@ import { DetailProductComponent } from './components/detail-product/detail-produ
 import { DisplayCartComponent } from './components/display-cart/display-cart.component';
 
 @NgModule({
-  declarations: [ViewProductsComponent, DetailProductComponent, DisplayCartComponent],
+  declarations: [
+    ViewProductsComponent,
+    DetailProductComponent,
+    DisplayCartComponent,
+  ],
   imports: [CommonModule, PagesRoutingModule, MaterialModule],
   exports: [ViewProductsComponent, DetailProductComponent],
 })

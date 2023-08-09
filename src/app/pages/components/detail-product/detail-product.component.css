@@ -10,6 +10,8 @@
   background-color: #fff;
   border-radius: 6px;
   padding: 2rem;
+
+  animation: toTop 0.8s backwards;
 }
 
 .detail-product--actions {
@@ -48,4 +50,16 @@
 .detail-product--info-price,
 .detail-product--info-description {
   padding: 2rem 0;
+}
+
+@keyframes toTop {
+  from {
+    opacity: 0;
+    transform: translatey(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translatey(0);
+  }
 }

@@ -1,61 +1,171 @@
 <div class="container">
-  <!-- tabela de produtos -->
-  <table
-    mat-table
-    [dataSource]="dataSource"
-    class="full-width-table"
-    *ngIf="showMessage"
-  >
-    <!-- Image Column -->
-    <ng-container matColumnDef="thumbnail">
-      <th mat-header-cell *matHeaderCellDef>Product</th>
-      <td mat-cell *matCellDef="let row">
-        <img
-          src="{{ row.thumbnail }}"
-          alt="Imagem do produto"
-          class="imageProduct"
-        />
-      </td>
-    </ng-container>
+  <div class="cart">
+    <div class="cart--table">
+      <!-- tabela de produtos -->
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="full-width-table"
+        *ngIf="showMessage"
+      >
+        <!-- Image Column -->
+        <ng-container matColumnDef="thumbnail">
+          <th mat-header-cell *matHeaderCellDef>Product</th>
+          <td mat-cell *matCellDef="let row">
+            <img
+              src="{{ row.thumbnail }}"
+              alt="Imagem do produto"
+              class="imageProduct"
+            />
+          </td>
+        </ng-container>
 
-    <!-- Title Column -->
-    <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let row">{{ row.title }}</td>
-    </ng-container>
+        <!-- Title Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let row" style="font-weight: 900">
+            {{ row.title }}
+          </td>
+        </ng-container>
 
-    <!-- Price Column -->
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef>Price</th>
-      <td mat-cell *matCellDef="let row">
-        {{ row.price | currency : "BRL" }}
-      </td>
-    </ng-container>
+        <!-- Price Column -->
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Price</th>
+          <td
+            mat-cell
+            *matCellDef="let row"
+            style="color: #129412; font-weight: 900"
+          >
+            {{ row.price | currency : "BRL" }}
+          </td>
+        </ng-container>
 
-    <!-- Actions Column -->
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td *matCellDef="let row">
-        <button mat-mini-fab (click)="removeItemCart(row)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </td>
-    </ng-container>
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td
+            *matCellDef="let row"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 119px;
+            "
+          >
+            <button
+              mat-mini-fab
+              color="accent"
+              class="button"
+              (click)="viewProduct()"
+            >
+              <mat-icon> search </mat-icon>
+            </button>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+            <button mat-mini-fab class="button" (click)="removeItemCart(row)">
+              <mat-icon> delete </mat-icon>
+            </button>
+          </td>
+        </ng-container>
 
-  <!-- mensagem de que não há produtos -->
-  <ng-container *ngIf="!showMessage">
-    <div class="products--info">
-      <h3>No product in cart</h3>
-      <div class="products--info-addCart">
-        <p>Add products to cart</p>
-        <button mat-mini-fab routerLink="/">
-          <mat-icon>add_shopping_cart</mat-icon>
-        </button>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+
+    <div class="cart--amounthForm" *ngIf="showMessage">
+      <div class="cart--amounth">
+        <h3 class="cart--amounth--title">Total amounth</h3>
+        <h4 class="cart--amounth--price">
+          {{ totalAmount | currency : "BRL" }}
+        </h4>
+
+        <div class="cart--amounth--actions">
+          <button mat-flat-button color="primary" (click)="addressForm = true">
+            <mat-icon>checklist_rtl</mat-icon>
+            complete order
+          </button>
+          <button mat-flat-button color="warn" (click)="removeAllItemsCart()">
+            <mat-icon>cancel_done </mat-icon>
+            empty order
+          </button>
+        </div>
+      </div>
+
+      <div class="cart--form" *ngIf="addressForm">
+        <form formGroup="form">
+          <h3 class="cart--form--title">Complete Order</h3>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Name</mat-label>
+            <input
+              type="text"
+              matInput
+              placeholder="Ex. Louzy Inacio"
+              formControlName="name"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              matInput
+              placeholder="Ex. louzy@example.com"
+              formControlName="email"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Mobile number</mat-label>
+            <input
+              type="tel"
+              matInput
+              placeholder="Ex. 999999999"
+              mobileNumber="name"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Address</mat-label>
+            <input
+              type="text"
+              matInput
+              placeholder="Ex. Aldeota"
+              formControlName="address"
+            />
+          </mat-form-field>
+
+          <div class="cart--form--actions">
+            <button
+              type="submit"
+              mat-flat-button
+              color="primary"
+              (click)="onSubmit()"
+              [disabled]="form.invalid"
+            >
+              <mat-icon>local_shipping</mat-icon>
+              Order
+            </button>
+            <button mat-flat-button color="warn" (click)="cancelForm()">
+              <mat-icon>cancel_done </mat-icon>
+              Cancel
+            </button>
+          </div>
+        </form>
       </div>
     </div>
-  </ng-container>
+  </div>
 </div>
+
+<!-- mensagem de que não há produtos -->
+<ng-container *ngIf="!showMessage">
+  <div class="products--info">
+    <h3>No product in cart</h3>
+    <div class="products--info-addCart">
+      <p>Add products to cart</p>
+      <button mat-mini-fab routerLink="/">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+    </div>
+  </div>
+</ng-container>

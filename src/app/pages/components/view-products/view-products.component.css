@@ -22,6 +22,8 @@
   /* background-color: #ccc; */
 
   width: 250px;
+
+  animation: toTop 0.8s backwards;
 }
 
 .card:hover {
@@ -59,4 +61,16 @@
   font-weight: 600;
 
   color: #f44336;
+}
+
+@keyframes toTop {
+  from {
+    opacity: 0;
+    transform: translatey(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translatey(0);
+  }
 }

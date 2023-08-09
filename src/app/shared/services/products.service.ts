@@ -51,4 +51,19 @@ export class ProductsService {
     });
     this.productList.next(this.cartListItems);
   }
+
+  // remover todos os itens do carrinho
+  removeAllItemsCart() {
+    this.cartListItems = [];
+    this.productList.next(this.cartListItems);
+  }
+
+  // calcular somatoria dos items do carrinho
+  calculateAmount() {
+    let total: number = 0;
+    this.cartListItems.map((item: IProducts) => {
+      total += item.price;
+    });
+    return total;
+  }
 }

@@ -1,9 +1,79 @@
 .container {
   padding: 40px;
+
+  animation: toLeft 0.8s backwards;
+}
+
+.cart {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cart--table {
+  flex: 2;
+}
+
+.button:first-child {
+  margin-right: 0.5rem;
+}
+
+.cart--amounthForm {
+  /* background-color: #fff;
+  border-radius: 6px;
+  padding: 1rem;
+  height: fit-content; */
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.cart--amounth,
+.cart--form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 1rem;
+  height: fit-content;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.cart--amounth--title,
+.cart--form--title {
+  font-size: 1.6rem;
+}
+
+.cart--amounth--price {
+  font-size: 1.2rem;
+  color: #129412;
+}
+
+.cart--amounth--actions,
+.cart--form--actions {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  gap: 0.8rem;
+}
+
+.cart--form {
+  animation: toTop 0.5s backwards;
+}
+
+.cart--form--title {
+  padding-bottom: 1rem;
 }
 
 .imageProduct {
-  width: 200px;
+  width: 150px;
   border-radius: 6px;
 }
 
@@ -24,4 +94,30 @@
   gap: 0.5em;
 
   padding-top: 1rem;
+}
+
+/* keyframes */
+
+@keyframes toLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
