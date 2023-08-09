@@ -1,3 +1,4 @@
+import { MatSnackbarService } from './../../../shared/services/mat-snackbar.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { IProducts } from '../../interfaces/products';
@@ -22,7 +23,8 @@ export class DisplayCartComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private matSnackbarService: MatSnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -43,10 +45,13 @@ export class DisplayCartComponent implements OnInit {
     // form
 
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      mobileNumber: ['', Validators.required],
-      address: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      mobileNumber: [
+        '',
+        [Validators.required, Validators.pattern(/[0-9\+\-\ ]/)],
+      ],
+      address: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
@@ -54,10 +59,14 @@ export class DisplayCartComponent implements OnInit {
     // console.log(item);
     this.productsService.removeToCart(item);
     this.dataSource = [...this.dataSource];
+
+    this.matSnackbarService.openMessage('Product removed from cart');
   }
 
   removeAllItemsCart() {
     this.productsService.removeAllItemsCart();
+
+    this.matSnackbarService.openMessage('Clean cart');
   }
 
   viewProduct() {
@@ -71,11 +80,20 @@ export class DisplayCartComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    // console.log(this.form.value);
+    console.log(this.form);
+    this.form.controls['name'].getError('minLength');
   }
 
   cancelForm() {
     this.addressForm = false;
     this.form.reset();
+  }
+
+  validForm(input: string, validator: string) {
+    return (
+      this.form.controls[input].hasError(validator) &&
+      !this.form.controls[input].hasError('required')
+    );
   }
 }

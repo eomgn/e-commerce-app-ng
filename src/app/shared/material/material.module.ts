@@ -10,6 +10,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -23,6 +24,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTableModule,
     MatInputModule,
     MatTooltipModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatToolbarModule,
@@ -34,6 +36,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTableModule,
     MatInputModule,
     MatTooltipModule,
+    MatSnackBarModule,
   ],
 })
 export class MaterialModule {}

@@ -109,6 +109,10 @@
               placeholder="Ex. Louzy Inacio"
               formControlName="name"
             />
+
+            <mat-error *ngIf="validForm('name', 'minlength')">
+              Please enter more than three characters
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
@@ -119,6 +123,10 @@
               placeholder="Ex. louzy@example.com"
               formControlName="email"
             />
+
+            <mat-error *ngIf="validForm('email', 'email')">
+              Please enter a valid email address
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
@@ -130,6 +138,10 @@
               mobileNumber="name"
               formControlName="mobileNumber"
             />
+
+            <mat-error *ngIf="validForm('mobileNumber', 'pattern')">
+              Please enter a valid number telephone
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
@@ -140,6 +152,10 @@
               placeholder="Ex. Aldeota"
               formControlName="address"
             />
+
+            <mat-error *ngIf="validForm('address', 'minlength')">
+              Please enter more than three characters
+            </mat-error>
           </mat-form-field>
 
           <div class="cart--form--actions">
@@ -153,6 +169,7 @@
               <mat-icon>local_shipping</mat-icon>
               Order
             </button>
+
             <button mat-flat-button color="warn" (click)="cancelForm()">
               <mat-icon>cancel_done </mat-icon>
               Cancel

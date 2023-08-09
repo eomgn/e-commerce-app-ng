@@ -1,3 +1,4 @@
+import { MatSnackbarService } from './../../../shared/services/mat-snackbar.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { IProducts } from '../../interfaces/products';
@@ -12,7 +13,10 @@ export class ViewProductsComponent implements OnInit {
 
   spinner: boolean = true;
 
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    private matSnackbarService: MatSnackbarService
+  ) {}
 
   ngOnInit(): void {
     this.displayProducts();
@@ -29,5 +33,6 @@ export class ViewProductsComponent implements OnInit {
 
   addCart(item: IProducts): void {
     this.productsService.addToCart(item);
+    this.matSnackbarService.openMessage('Product added to cart');
   }
 }

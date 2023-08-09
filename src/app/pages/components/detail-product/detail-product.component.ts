@@ -1,3 +1,4 @@
+import { MatSnackbarService } from './../../../shared/services/mat-snackbar.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/shared/services/products.service';
@@ -20,7 +21,8 @@ export class DetailProductComponent implements OnInit, OnDestroy {
 
   constructor(
     private productService: ProductsService,
-    private activedRoute: ActivatedRoute
+    private activedRoute: ActivatedRoute,
+    private matSnackbarService: MatSnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +44,7 @@ export class DetailProductComponent implements OnInit, OnDestroy {
     this.showRemoveCart = true;
 
     this.productService.addToCart(item);
+    this.matSnackbarService.openMessage('Product added to cart');
   }
 
   removeProduct(item: IProducts) {
@@ -49,6 +52,8 @@ export class DetailProductComponent implements OnInit, OnDestroy {
     this.showRemoveCart = false;
 
     this.productService.removeToCart(item);
+
+    this.matSnackbarService.openMessage('Product removed from cart');
   }
 
   ngOnDestroy(): void {

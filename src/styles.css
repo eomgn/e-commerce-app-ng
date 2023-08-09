@@ -17,3 +17,9 @@ body {
 .mat-mdc-table {
   border-bottom-style: none;
 }
+
+.mat-mdc-snack-bar-container {
+  --mdc-snackbar-container-color: #fad84a !important;
+  --mat-mdc-snack-bar-button-color: #000;
+  --mdc-snackbar-supporting-text-color: #000;
+}
