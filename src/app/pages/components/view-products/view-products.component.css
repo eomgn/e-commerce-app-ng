@@ -54,12 +54,16 @@
 
 .card--details-title {
   height: 2rem;
+  margin-bottom: 1rem;
 }
 
 .card--details-title p {
   font-size: 1.2rem;
   font-weight: 600;
 }
+/* .card--details-price {
+  padding-top: 1rem;
+} */
 
 @keyframes toTop {
   from {

@@ -81,8 +81,7 @@ export class DisplayCartComponent implements OnInit {
 
   onSubmit() {
     // console.log(this.form.value);
-    console.log(this.form);
-    this.form.controls['name'].getError('minLength');
+    localStorage.setItem('[form]_name', JSON.stringify(this.form.value.name));
   }
 
   cancelForm() {

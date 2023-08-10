@@ -10,6 +10,10 @@ import { Component, OnInit } from '@angular/core';
 export class OrderPageComponent implements OnInit {
   totalAmount: number = 0;
 
+  // localStorage
+  userStorage!: any;
+  userShopp!: string;
+
   constructor(
     private productsService: ProductsService,
     private router: Router
@@ -25,5 +29,12 @@ export class OrderPageComponent implements OnInit {
 
     // preço total
     this.totalAmount = this.productsService.calculateAmount();
+
+    // usuario que efetuou a commpra
+    let localStorageData = localStorage.getItem('[form]_name');
+
+    this.userStorage = localStorageData;
+
+    this.userShopp = JSON.parse(this.userStorage);
   }
 }

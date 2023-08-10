@@ -20,6 +20,9 @@ export class ViewProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayProducts();
+
+    // limpar localStorage
+    localStorage.removeItem('[form]_name');
   }
 
   displayProducts() {

@@ -31,6 +31,7 @@ export class ProductsService {
   */
   addToCart(item: IProducts) {
     this.cartListItems.push(item);
+
     this.productList.next(this.cartListItems);
     console.log(this.cartListItems);
   }
