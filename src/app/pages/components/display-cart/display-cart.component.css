@@ -68,7 +68,8 @@
   animation: toTop 0.5s backwards;
 }
 
-.cart--form--title {
+.cart--form--title,
+.cart--form--subtitle {
   padding-bottom: 1rem;
 }
 

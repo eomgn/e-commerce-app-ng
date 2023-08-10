@@ -36,7 +36,7 @@
             *matCellDef="let row"
             style="color: #129412; font-weight: 900"
           >
-            {{ row.price | currency : "BRL" }}
+            {{ row.price | currency : "USD" }}
           </td>
         </ng-container>
 
@@ -100,6 +100,8 @@
       <div class="cart--form" *ngIf="addressForm">
         <form [formGroup]="form">
           <h3 class="cart--form--title">Complete Order</h3>
+
+          <p class="cart--form--subtitle">Fill out form for shipping</p>
 
           <mat-form-field class="example-full-width">
             <mat-label>Name</mat-label>
@@ -165,6 +167,7 @@
               color="primary"
               (click)="onSubmit()"
               [disabled]="form.invalid"
+              routerLink="/order-page"
             >
               <mat-icon>local_shipping</mat-icon>
               Order
@@ -179,17 +182,17 @@
       </div>
     </div>
   </div>
-</div>
 
-<!-- mensagem de que não há produtos -->
-<ng-container *ngIf="!showMessage">
-  <div class="products--info">
-    <h3>No product in cart</h3>
-    <div class="products--info-addCart">
-      <p>Add products to cart</p>
-      <button mat-mini-fab routerLink="/">
-        <mat-icon>add_shopping_cart</mat-icon>
-      </button>
+  <!-- mensagem de que não há produtos -->
+  <ng-container *ngIf="!showMessage">
+    <div class="products--info">
+      <h3>No product in cart</h3>
+      <div class="products--info-addCart">
+        <p>Add products to cart</p>
+        <button mat-mini-fab routerLink="/">
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+      </div>
     </div>
-  </div>
-</ng-container>
+  </ng-container>
+</div>

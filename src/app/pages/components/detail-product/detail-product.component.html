@@ -1,9 +1,5 @@
 <!-- progressbar loading -->
-<mat-progress-bar
-  mode="indeterminate"
-  *ngIf="progressBar"
-  color="warn"
-></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" *ngIf="progressBar"></mat-progress-bar>
 
 <!-- ações no produto -->
 <div class="container" *ngIf="productData">
@@ -18,7 +14,7 @@
       <div class="detail-product--buttons">
         <button mat-flat-button color="accent">
           <mat-icon>inventory_2</mat-icon>
-          Comprar agora
+          Buy now
         </button>
 
         <button
@@ -28,7 +24,7 @@
           *ngIf="showAddCart"
         >
           <mat-icon>shopping_cart_checkout</mat-icon>
-          Adicionar ao carrinho
+          Add to cart
         </button>
 
         <button
@@ -38,7 +34,7 @@
           *ngIf="showRemoveCart"
         >
           <mat-icon>remove_shopping_cart</mat-icon>
-          Remover do carrinho
+          Remove of cart
         </button>
       </div>
     </div>
@@ -49,24 +45,24 @@
       <h1 class="detail-product--info-title">
         {{ productData.title }}
       </h1>
-      <strong style="color: #673ab7">Preço especial</strong>
+      <strong style="color: #673ab7">Special Price</strong>
       <p style="color: #12b312">
-        <strong>Desconto:</strong>
+        <strong>Discount:</strong>
         {{ productData.discountPercentage / 100 | percent : "1.2-2" }}
       </p>
 
       <h3 class="detail-product--info-price">
-        Preço: {{ productData.price | currency : "BRL" }}
+        Price: {{ productData.price | currency : "USD" }}
       </h3>
 
-      <p><strong>Categoria:</strong> {{ productData.category }}</p>
-      <p><strong>Marca:</strong> {{ productData.brand }}</p>
+      <p><strong>Category:</strong> {{ productData.category }}</p>
+      <p><strong>Brand:</strong> {{ productData.brand }}</p>
 
       <p class="detail-product--info-description">
-        <strong>Descrição:</strong> {{ productData.description }}
+        <strong>Description:</strong> {{ productData.description }}
       </p>
 
-      <p><strong>Em estoque:</strong> {{ productData.stock }} unidades</p>
+      <p><strong>In stock:</strong> {{ productData.stock }} units</p>
     </div>
   </div>
 </div>

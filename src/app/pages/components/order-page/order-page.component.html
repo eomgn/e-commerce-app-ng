@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="card">
+    <mat-card>
+      <mat-card-content class="card--content">
+        <div>
+          <img
+            src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099_1280.png"
+            alt="Imagem de sucesso"
+            style="max-width: 500px"
+          />
+        </div>
+        <h2>Order has placed successfully</h2>
+        <p>Thank you for shopping with popular e-commerce!</p>
+        <p>
+          Please pay the
+          <strong>{{ totalAmount | currency : "USD" }} </strong> amount during
+          the time of delivery.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

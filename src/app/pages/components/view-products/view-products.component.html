@@ -1,7 +1,7 @@
 <div class="container">
   <div class="cards--list">
     <!-- spinner de carregando os produtos -->
-    <mat-spinner *ngIf="spinner" color="warn"></mat-spinner>
+    <mat-spinner *ngIf="spinner"></mat-spinner>
 
     <!-- produtos com detalhes e ações -->
     <div class="card" *ngFor="let item of dataProducts">
@@ -14,7 +14,7 @@
         </div>
 
         <div class="card--details-price">
-          <p>{{ item.price | currency : "BRL" }}</p>
+          <p>{{ item.price | currency : "USD" }}</p>
         </div>
 
         <button

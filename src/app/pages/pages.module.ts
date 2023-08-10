@@ -8,12 +8,14 @@ import { ViewProductsComponent } from './components/view-products/view-products.
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
 import { DisplayCartComponent } from './components/display-cart/display-cart.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrderPageComponent } from './components/order-page/order-page.component';
 
 @NgModule({
   declarations: [
     ViewProductsComponent,
     DetailProductComponent,
     DisplayCartComponent,
+    OrderPageComponent,
   ],
   imports: [
     CommonModule,
